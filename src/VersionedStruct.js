@@ -4,12 +4,8 @@ const utils = require('./utils');
 class VersionedStruct extends Struct {
   constructor(type, versions = {}) {
     super();
-    this.type = type;    
+    this.type = type;
     this.versions = versions;
-    if (typeof this.type === 'string') {
-      this.versionGetter = new Function('parent', `return parent.${this.type}`);
-      this.versionSetter = new Function('parent', 'version', `return parent.${this.type} = version`);
-    }
   }
 
   versionGetter(parent) {
